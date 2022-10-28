@@ -5,6 +5,7 @@ import { useState } from 'react'
 
 import OrderPage0 from './OrderPage0';
 import OrderPage1 from './OrderPage1';
+import Cart from './Cart';
 
 function OrderPage() {
 
@@ -12,9 +13,13 @@ function OrderPage() {
     const [location, setLocation] = useState('');
     const [n, setN] = useState(1);
 
+    const [menu1, setMenu1] = useState([])
+    const [menu2, setMenu2] = useState([])
+
+
 
     const nextPage = () => {
-        if (page < 2) {
+        if (page < 3) {
             const temp = page + 1;
             setPage(temp);
         }
@@ -32,13 +37,15 @@ function OrderPage() {
             <header className="App-header">
                 {page === 0 && <OrderPage0 location={location} n={n} setLocation={setLocation} setN={setN} />}
 
-                {page === 1 && <OrderPage1 />}
+                {page === 1 && <OrderPage1 menu1={menu1} setMenu1={setMenu1} />}
 
                 {page === 2 && (
                     <div>
-                        <h1>This is menu page 2</h1>
+                        <h1>Menu Desert: </h1>
                     </div>
                 )}
+
+                {page === 3 && <Cart menu1={menu1} menu2={menu2} />}
 
                 <Button onClick={prevPage} style={{ marginTop: 30, color: 'white' }} variant="outlined">Prev Page</Button>
                 <Button onClick={nextPage} style={{ marginTop: 30, color: 'white' }} variant="outlined">Next Page</Button>

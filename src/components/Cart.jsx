@@ -1,7 +1,6 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
+import React from 'react'
 import { DataGrid } from '@mui/x-data-grid';
-import { useState } from 'react';
+import { Box } from '@mui/material';
 
 const columns = [
     { field: 'id', headerName: 'ID', width: 30 },
@@ -29,27 +28,34 @@ const rows = [
     { id: 6, DishName: 'Fish', Price: 299 },
 ];
 
-export default function OrderPage1({menu1, setMenu1}) {
+export default function Cart({ menu1, menu2 }) {
+
+    const netRows = []
+    menu1.forEach(i => {
+        netRows.push(rows[i-1])
+        console.log(rows[i-1])
+    })
+
+    console.log(netRows.length)
+
+    let total = 0;
+    netRows.forEach(i=>{
+        total += i['Price']
+    })
 
     return (
         <div>
-            <h1>Menu Appetizer</h1>
+            <h1>Your Cart</h1>
             <Box sx={{ height: 400, width: 300, color: 'white' }}>
                 <DataGrid
                     style={{ color: 'white' }}
-                    rows={rows}
+                    rows={netRows}
                     columns={columns}
-                    checkboxSelection
-                    disableSelectionOnClick
-                    onSelectionModelChange={(newSelection) => {
-                        setMenu1(newSelection);
-                    }}
                     rowsPerPageOptions={[6]}
                     hideFooter={true}
                 />
             </Box>
+            <h4>Total : {total}</h4>
         </div>
-    );
+    )
 }
-
-
