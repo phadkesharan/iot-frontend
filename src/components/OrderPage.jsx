@@ -3,9 +3,14 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import { useState } from 'react'
 
+import OrderPage0 from './OrderPage0';
+
 function OrderPage() {
 
     const [page, setPage] = useState(0);
+    const [location, setLocation] = useState('');
+    const [n, setN] = useState(1);
+
 
     const nextPage = () => {
         if (page < 2) {
@@ -24,11 +29,7 @@ function OrderPage() {
     return (
         <div className="App">
             <header className="App-header">
-                {page === 0 && (
-                    <div>
-                        <h1>This is menu page 0</h1>
-                    </div>
-                )}
+                {page === 0 && <OrderPage0 location={location} n={n} setLocation={setLocation} setN={setN} />}
 
                 {page === 1 && (
                     <div>
@@ -42,8 +43,9 @@ function OrderPage() {
                     </div>
                 )}
 
-                <Button onClick={nextPage} style={{ marginTop: 30 }} variant="outlined">Next Page</Button>
                 <Button onClick={prevPage} style={{ marginTop: 30 }} variant="outlined">Prev Page</Button>
+                <Button onClick={nextPage} style={{ marginTop: 30 }} variant="outlined">Next Page</Button>
+
             </header>
         </div>
     );
