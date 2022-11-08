@@ -8,7 +8,10 @@ export default function OrderPage0({location, n, setLocation, setN}) {
             <h1 style={{}}>Team Enigma</h1>
             <TextField
                 inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
-                style={{ marginTop: 30 }}
+                style={{ marginTop: 30}}
+                sx={{input: {
+                    color: 'white'
+                }}}
                 fullWidth
                 label="Enter number of people dining"
                 variant="outlined"
@@ -21,9 +24,12 @@ export default function OrderPage0({location, n, setLocation, setN}) {
             <br />
 
             <TextField
-                style={{ marginTop: 30 }}
+                style={{ marginTop: 30, color: 'white' }}
                 label="Enter Location"  
                 fullWidth
+                sx={{input: {
+                    color: 'white'
+                }}}
                 variant="outlined"
                 focused
                 onChange={({target})=>{
