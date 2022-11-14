@@ -8,7 +8,7 @@ const columns = [
     {
         field: 'DishName',
         headerName: 'Dish Name',
-        width: 100,
+        width: 200,
         editable: true,
     },
     {
@@ -21,12 +21,10 @@ const columns = [
 ];
 
 const rows = [
-    { id: 1, DishName: 'Fish', Price: 299 },
-    { id: 2, DishName: 'Fish', Price: 299 },
-    { id: 3, DishName: 'Fish', Price: 299 },
-    { id: 4, DishName: 'Fish', Price: 299 },
-    { id: 5, DishName: 'Fish', Price: 299 },
-    { id: 6, DishName: 'Fish', Price: 299 },
+    { id: 1, DishName: 'Savor Party Bread', Price: 299 },
+    { id: 2, DishName: 'Fruit Charcuterie Board', Price: 359 },
+    { id: 3, DishName: 'Hot Spinach Artichoke Dip', Price: 499 },
+    { id: 4, DishName: 'Fried Prosciutto Tortellini', Price: 199 },
 ];
 
 export default function OrderPage1({menu1, setMenu1}) {
@@ -34,7 +32,7 @@ export default function OrderPage1({menu1, setMenu1}) {
     return (
         <div>
             <h1>Menu Appetizer</h1>
-            <Box sx={{ height: 400, width: 300, color: 'white' }}>
+            <Box sx={{ height: 400, width: 430, color: 'white' }}>
                 <DataGrid
                     style={{ color: 'white' }}
                     rows={rows}

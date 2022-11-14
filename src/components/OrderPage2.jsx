@@ -1,6 +1,7 @@
-import React from 'react'
+import * as React from 'react';
+import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
-import { Box } from '@mui/material';
+import { useState } from 'react';
 
 const columns = [
     { field: 'id', headerName: 'ID', width: 30 },
@@ -20,48 +21,33 @@ const columns = [
 ];
 
 const rows = [
-    { id: 1, DishName: 'Savor Party Bread', Price: 299 },
-    { id: 2, DishName: 'Fruit Charcuterie Board', Price: 359 },
-    { id: 3, DishName: 'Hot Spinach Artichoke Dip', Price: 499 },
-    { id: 4, DishName: 'Fried Prosciutto Tortellini', Price: 199 },
     { id: 5, DishName: 'Newyork Cheese Cake', Price: 299 },
     { id: 6, DishName: 'Lemon Meringue Pie', Price: 199 },
     { id: 7, DishName: 'Warm bread pudding', Price: 449 },
     { id: 8, DishName: 'Red Velvet Cake', Price: 999 },
 ];
 
-export default function Cart({ menu1, menu2 }) {
-
-    const netRows = []
-    menu1.forEach(i => {
-        netRows.push(rows[i-1])
-        console.log(rows[i-1])
-    })
-
-    menu2.forEach(i =>{
-        netRows.push(rows[i-1])
-    })
-
-    console.log(netRows.length)
-
-    let total = 0;
-    netRows.forEach(i=>{
-        total += i['Price']
-    })
+export default function OrderPage2({menu2, setMenu2}) {
 
     return (
         <div>
-            <h1>Your Cart</h1>
+            <h1>Menu Dessert</h1>
             <Box sx={{ height: 400, width: 430, color: 'white' }}>
                 <DataGrid
                     style={{ color: 'white' }}
-                    rows={netRows}
+                    rows={rows}
                     columns={columns}
+                    checkboxSelection
+                    disableSelectionOnClick
+                    onSelectionModelChange={(newSelection) => {
+                        setMenu2(newSelection);
+                    }}
                     rowsPerPageOptions={[6]}
                     hideFooter={true}
                 />
             </Box>
-            <h4>Total : {total}</h4>
         </div>
-    )
+    );
 }
+
+

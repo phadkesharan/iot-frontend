@@ -5,6 +5,7 @@ import { useState } from 'react'
 
 import OrderPage0 from './OrderPage0';
 import OrderPage1 from './OrderPage1';
+import OrderPage2 from './OrderPage2';
 import Cart from './Cart';
 import FinalPage from './FinalPage';
 
@@ -16,8 +17,6 @@ function OrderPage() {
 
     const [menu1, setMenu1] = useState([])
     const [menu2, setMenu2] = useState([])
-
-
 
     const nextPage = () => {
         if (page < 4) {
@@ -40,15 +39,11 @@ function OrderPage() {
 
                 {page === 1 && <OrderPage1 menu1={menu1} setMenu1={setMenu1} />}
 
-                {page === 2 && (
-                    <div>
-                        <h1>Menu Desert: </h1>
-                    </div>
-                )}
+                {page === 2 && <OrderPage2 menu2={menu2} setMenu2={setMenu2} />}
 
                 {page === 3 && <Cart menu1={menu1} menu2={menu2} />}
 
-                {page === 4 && <FinalPage />}
+                {page === 4 && <FinalPage menu1={menu1} menu2={menu2} location={location} n={n} />}
 
                 <Button onClick={prevPage} style={{ marginTop: 30, color: 'white' }} variant="outlined">Prev Page</Button>
                 {page !== 4 && <Button onClick={nextPage} style={{ marginTop: 30, color: 'white' }} variant="outlined">Next Page</Button>}
